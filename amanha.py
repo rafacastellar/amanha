@@ -3,28 +3,31 @@
 # Obs.: Caso a data seja inválida, o programa deverá alertar
 #       o usuário e encerrar a execução.
 
+
 def bissexto(a):
-    """ Retorna 1 se o ano for bissexto, ou 0 caso contrário. """
-    if (a % 4 == 0 and a % 100 != 0) or \
-       (a % 400 == 0):
-        return True
-    else:
-        return False
+    """Retorna 1 se o ano for bissexto, ou 0 caso contrário."""
+    return (a % 4 == 0 and a % 100 != 0) or (a % 400 == 0)
+
 
 def dia_maximo(m, a):
-    if m == 2: 
+    if m == 2:
         return 28 + bissexto(a)
-    elif m == 4 or m == 6 or m == 9 or m == 11:
+    elif m in [4, 6, 9, 11]:
         return 30
     else:
         return 31
 
+
 def valida(d, m, a):
-    """ Verifica se a data é válida. """
-    if a < 1: return False
-    if m < 1 or m > 12: return False
-    if d < 1 or d > dia_maximo(m, a): return False
+    """Verifica se a data é válida."""
+    if a < 1:
+        return False
+    if m < 1 or m > 12:
+        return False
+    if d < 1 or d > dia_maximo(m, a):
+        return False
     return True
+
 
 def exibe_ds(d, m, a):
     d += 1
@@ -35,14 +38,16 @@ def exibe_ds(d, m, a):
             m = 1
             a += 1
 
-    print(f'{d}/{m}/{a}')
+    print(f"{d:02}/{m:02}/{a:04}")
+
 
 def main():
-    d, m, a = map(int, input('Data? ').split('/'))
+    d, m, a = map(int, input("Data? ").split("/"))
 
     if valida(d, m, a):
         exibe_ds(d, m, a)
     else:
-        print('Data inválida!')
+        print("Data inválida!")
+
 
 main()
