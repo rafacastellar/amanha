@@ -4,6 +4,7 @@
 #       o usuário e encerrar a execução.
 
 def bissexto(a):
+    """ Retorna 1 se o ano for bissexto, ou 0 caso contrário. """
     if (a % 4 == 0 and a % 100 != 0) or \
        (a % 400 == 0):
         return True
@@ -19,6 +20,7 @@ def dia_maximo(m, a):
         return 31
 
 def valida(d, m, a):
+    """ Verifica se a data é válida. """
     if a < 1: return False
     if m < 1 or m > 12: return False
     if d < 1 or d > dia_maximo(m, a): return False
